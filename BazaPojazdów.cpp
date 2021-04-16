@@ -9,10 +9,10 @@ using namespace std;
 int main()
 {
     char wybor='0';
+    int ID = 0;
 
-    while (wybor != 5)
+    while ( wybor != 5)
     {
-
 
         //Menu
 
@@ -25,52 +25,64 @@ int main()
         //Wczytywanie wyboru opcji
 
         cin >> wybor;
+        system("cls");
+
+        ifstream myfile("baza.txt");
+
+        if (myfile.peek() == ifstream::traits_type::eof())
+        {
+            ID = 0;
+        }
+
 
         string nr_rej;
-        Pojazd p1;
-
+        Pojazd p1;      
 
 
         switch (wybor)
         {
 
         case '1':
-            cout << "Dodawanie pojazdu" << endl;
-            p1.Dodaj();
-
+            //system("cls");
+            cout << "Dodawanie pojazdu: " << endl;
+            p1.Dodaj(ID);
+            ID++;
             break;
 
         case '2':
-            cout << "Lista pojazdow" << endl;
+            //system("cls");
+            cout << endl;
+            cout << "Lista pojazdow: "<< endl;
+            cout << endl;
+            p1.Odczytaj();
             break;
 
         case '3':
+            //system("cls");
             cout << "Usuwanie pojazdu" << endl;
             break;
 
         case '4':
+            //system("cls");
             cout << "Znajdywanie poazdu" << endl;
 
             cout << "Podaj numer rejestracyjny pojazdu: " << endl;
             cin >> nr_rej;
-
             break;
 
 
         case '5':
-            
-
+            //system("cls");
             cout << "Do widzenia " << endl;
             exit(0);
-
             break;
 
         default:
-            cout << "Error" << endl;
+            cout << "Error " + wybor << endl;
             break;
         }
+        
     }
-
 
     
 
