@@ -76,8 +76,3 @@ void Pojazd::Znajdz()
 {
 	
 }
-
-void Pojazd::ChceckID()
-{
-	
-}

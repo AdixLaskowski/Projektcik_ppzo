@@ -2,6 +2,9 @@
 //
 
 #include <iostream>
+#include <cstdlib>
+#include <string>
+#include <fstream>
 #include "Pojazd.h"
 
 using namespace std;
@@ -9,7 +12,8 @@ using namespace std;
 int main()
 {
     char wybor='0';
-    int ID = 0;
+
+    int licznik=0;
 
     while ( wybor != 5)
     {
@@ -22,61 +26,63 @@ int main()
         cout << "4. Znajdz pojazd" << endl;
         cout << "5.Wyjdz z programu" << endl;
 
+
         //Wczytywanie wyboru opcji
 
         cin >> wybor;
         system("cls");
 
+
+        //Określanie ID kolejnego pojazdu po liczbie linii w pliku tekstowym z bazą danych
+
         ifstream myfile("baza.txt");
+        int ID = 0;
+        string line;
 
-        if (myfile.peek() == ifstream::traits_type::eof())
-        {
-            ID = 0;
-        }
+        while (std::getline(myfile, line))
+            ++ID;
 
 
-        string nr_rej;
+        //Tworzenie obiektu nowego pojazdu
+
         Pojazd p1;      
 
+        //Obsługa menu
 
         switch (wybor)
         {
-
+            //Dodawanie nowego pojazdu do bazy
         case '1':
-            //system("cls");
             cout << "Dodawanie pojazdu: " << endl;
             p1.Dodaj(ID);
-            ID++;
             break;
 
+            //Wyświetlenie listy pojazdów
         case '2':
-            //system("cls");
             cout << endl;
             cout << "Lista pojazdow: "<< endl;
             cout << endl;
             p1.Odczytaj();
             break;
 
+            //Usuwanie pojazdu
         case '3':
-            //system("cls");
             cout << "Usuwanie pojazdu" << endl;
             break;
 
+            //Znajdywanie pojazdu
         case '4':
-            //system("cls");
             cout << "Znajdywanie poazdu" << endl;
-
             cout << "Podaj numer rejestracyjny pojazdu: " << endl;
-            cin >> nr_rej;
             break;
 
-
+            //Wyjście z programu
         case '5':
-            //system("cls");
             cout << "Do widzenia " << endl;
             exit(0);
             break;
 
+            //Jeżeli podane opcja nie pasuje do opcji menu
         default:
             cout << "Error " + wybor << endl;
             break;

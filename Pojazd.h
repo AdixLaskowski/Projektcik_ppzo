@@ -11,22 +11,22 @@ using namespace std;
 
 class Pojazd
 {
-	string nr_rej, paliwo, marka, model, VIN;
-	string poj_silnik, KW, przebieg, rocznik, ID;
+	//Dane pojazdów
 
+	string nr_rej, marka, model, poj_silnik, KW, przebieg, rocznik, ID;
 
 public:
 	
 	fstream file;
 	string line;
 
+	//Metody dot. pojazdów
+
 	void Wyswietl(int ID);
 	void Dodaj(int ID);
 	void Zapisz();
 	void Odczytaj();
 	void Znajdz();
-	void ChceckID();
-
 
 };
 
