@@ -32,6 +32,9 @@ void Pojazd::Dodaj(int ID)
 
 	Zapisz();
 
+	cout << endl << "ID twojego samochodu to: " << this->ID;
+	cout << endl << endl;
+	Sleep(1500);
 	cout << "Dodawanie pojazdu do bazy zakonczone pomyslnie" << endl;
 	Sleep(1000);
 

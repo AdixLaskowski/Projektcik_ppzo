@@ -6,6 +6,7 @@
 #include <string>
 #include <fstream>
 #include "Pojazd.h"
+#include "Motor.h"
 
 using namespace std;
 
@@ -41,11 +42,7 @@ int main()
 
         while (std::getline(myfile, line))
             ++ID;
-
-
-        //Tworzenie obiektu nowego pojazdu
-
-        Pojazd p1;      
+        
 
         //Obsługa menu
 
@@ -53,8 +50,27 @@ int main()
         {
             //Dodawanie nowego pojazdu do bazy
         case '1':
+            int typ;
             cout << "Dodawanie pojazdu: " << endl;
-            p1.Dodaj(ID);
+            cout << "Jaki typ pojazdu chcesz dodac ? " << endl;
+            cin >> typ;
+
+
+            if (typ == 1)
+            {
+                Pojazd p1; //Tworzenie obiektu nowego pojazdu
+                p1.Dodaj(ID);
+            }
+            
+            else
+                if (typ == 2) {
+                    Motor m1; //Tworzenie obiektu nowego motora
+                    m1.Dodaj(ID);
+                    
+                }
+                else cout << "Zla opcja" << endl;
+
+            
             break;
 
             //Wyświetlenie listy pojazdów
@@ -62,7 +78,7 @@ int main()
             cout << endl;
             cout << "Lista pojazdow: "<< endl;
             cout << endl;
-            p1.Odczytaj();
+            //p1.Odczytaj();
             break;
 
             //Usuwanie pojazdu
