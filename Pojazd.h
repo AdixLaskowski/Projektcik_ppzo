@@ -25,8 +25,7 @@ public:
 	void Wyswietl(int ID);
 	void Dodaj(int ID);
 	void Zapisz();
-	void Odczytaj();
-	void Znajdz();
+	void DrawVehicle();
 
 };
 

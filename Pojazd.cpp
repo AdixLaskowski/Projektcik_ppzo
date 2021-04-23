@@ -52,30 +52,17 @@ void Pojazd::Zapisz()
 	file_out << endl;
 }
 
-void Pojazd::Odczytaj()
+void Pojazd::DrawVehicle()
 {
-	string line;
-	ifstream myfile("baza.txt");
-
-	if (myfile.peek() == ifstream::traits_type::eof())
-	{
-		cout << endl;
-		cout << "Baza jest pusta" << endl;
-		cout << endl;
-	}
-
-	if (myfile.is_open())
-	{
-		while (getline(myfile, line))
-		{
-			cout << line << '\n';
-			cout << endl;
-		}
-		myfile.close();
-	}
+	cout << "                       ____________________" << endl;
+	cout << "                     //|           |        \." << endl;
+	cout << "                   //  |           |          \." << endl;
+	cout << "      ___________//____|___________|__________()\__________________" << endl;
+	cout << "    /__________________|_=_________|_=___________|_________________{}" << endl;
+	cout << "    [           ______ |           | .           | ==  ______      { }" << endl;
+	cout << "   _[__        /##  ##\|           |             |    /##  ##\    _{# }_" << endl;
+	cout << " {_____)______|##    ##|___________|_____________|___|##    ##|__(______}" << endl;
+	cout << "             /  ##__##                              /  ##__##        \." << endl;
+	cout << endl;
 }
 
-void Pojazd::Znajdz()
-{
-	
-}

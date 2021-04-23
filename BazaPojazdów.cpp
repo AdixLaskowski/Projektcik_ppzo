@@ -3,12 +3,36 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <cstdio>
 #include <string>
 #include <fstream>
 #include "Pojazd.h"
 #include "Motor.h"
 
 using namespace std;
+
+void Odczytaj()
+{
+    string line;
+    ifstream myfile("baza.txt");
+
+    if (myfile.peek() == ifstream::traits_type::eof())
+    {
+        cout << endl;
+        cout << "Baza jest pusta" << endl;
+        cout << endl;
+    }
+
+    if (myfile.is_open())
+    {
+        while (getline(myfile, line))
+        {
+            cout << line << '\n';
+            cout << endl;
+        }
+        myfile.close();
+    }
+}
 
 int main()
 {
@@ -23,9 +47,7 @@ int main()
 
         cout << "1. Dodaj pojazd" << endl;
         cout << "2. Lista zarejestrowanych pojazdow" << endl;
-        cout << "3. Usun pojazd" << endl;
-        cout << "4. Znajdz pojazd" << endl;
-        cout << "5.Wyjdz z programu" << endl;
+        cout << "3.Wyjdz z programu" << endl;
 
 
         //Wczytywanie wyboru opcji
@@ -52,20 +74,24 @@ int main()
         case '1':
             int typ;
             cout << "Dodawanie pojazdu: " << endl;
-            cout << "Jaki typ pojazdu chcesz dodac ? " << endl;
+            cout << "Jaki typ pojazdu chcesz dodac? 1-Pojazd zwykly  2-Motor" << endl;
             cin >> typ;
 
 
             if (typ == 1)
             {
                 Pojazd p1; //Tworzenie obiektu nowego pojazdu
+                p1.DrawVehicle();
                 p1.Dodaj(ID);
             }
             
             else
                 if (typ == 2) {
                     Motor m1; //Tworzenie obiektu nowego motora
+                    cout << "Dodawanie pojazdu typu motor" << endl;
+                    m1.Draw();
                     m1.Dodaj(ID);
+                    
                     
                 }
                 else cout << "Zla opcja" << endl;
@@ -78,22 +104,12 @@ int main()
             cout << endl;
             cout << "Lista pojazdow: "<< endl;
             cout << endl;
-            //p1.Odczytaj();
+            Odczytaj();
             break;
 
-            //Usuwanie pojazdu
-        case '3':
-            cout << "Usuwanie pojazdu" << endl;
-            break;
-
-            //Znajdywanie pojazdu
-        case '4':
-            cout << "Znajdywanie poazdu" << endl;
-            cout << "Podaj numer rejestracyjny pojazdu: " << endl;
-            break;
 
             //Wyjście z programu
-        case '5':
+        case '3':
             cout << "Do widzenia " << endl;
             exit(0);
             break;
